@@ -1,3 +1,5 @@
+import 'package:custom_color_picker/src/presentation/color_picker.dart';
+import 'package:custom_color_picker/src/presentation/test.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,7 +9,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Hello, World!'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ColorPicker(),
+            Test(),
+          ],
+        ),
       ),
     );
   }
