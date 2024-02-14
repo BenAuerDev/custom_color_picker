@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ColorPicker(),
-            Test(),
+            ReactiveDisplay(),
           ],
         ),
       ),
