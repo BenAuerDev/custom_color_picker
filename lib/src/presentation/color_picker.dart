@@ -8,7 +8,9 @@ class ColorPicker extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hue = ref.watch(colorPickerControllerProvider).value;
+    final hue = ref.watch(colorPickerControllerProvider).hue;
+
+    final color = HSVColor.fromAHSV(1.0, hue, 1.0, 1.0).toColor();
 
     return Column(
       mainAxisSize: MainAxisSize.min,

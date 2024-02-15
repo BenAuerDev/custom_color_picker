@@ -7,7 +7,7 @@ part 'color_picker_controller.g.dart';
 class ColorPickerController extends _$ColorPickerController {
   @override
   ColorPickerState build() {
-    return const ColorPickerState(value: 0.0);
+    return const ColorPickerState(hue: 0.0);
   }
 
   void slide(double value) {
