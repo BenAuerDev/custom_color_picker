@@ -1,5 +1,5 @@
 import 'package:custom_color_picker/src/presentation/color_picker.dart';
-import 'package:custom_color_picker/src/presentation/test.dart';
+import 'package:custom_color_picker/src/presentation/test_display.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,7 +12,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ColorPicker(),
+            ColorPicker(
+              withOpacity: true,
+            ),
             ReactiveDisplay(),
           ],
         ),

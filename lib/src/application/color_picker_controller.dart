@@ -10,13 +10,17 @@ class ColorPickerController extends _$ColorPickerController {
     return const ColorPickerState(hue: 0.0);
   }
 
-  void slide(double value) {
-    state = state.copyWith(value: value);
+  void changeHue(double value) {
+    state = state.copyWith(hue: value);
+  }
+
+  void changeOpacity(double value) {
+    state = state.copyWith(alpha: value);
   }
 
   void takeHex(String hex) {
     final hexValue = hex.startsWith('#') ? hex.substring(1) : hex;
 
-    state = state.copyWith(value: int.parse(hexValue, radix: 16).toDouble());
+    state = state.copyWith(hue: int.parse(hexValue, radix: 16).toDouble());
   }
 }

@@ -1,15 +1,19 @@
 class ColorPickerState {
   const ColorPickerState({
-    required this.hue,
+    this.alpha = 1.0,
+    this.hue = 0.0,
   });
 
+  final double alpha;
   final double hue;
 
   ColorPickerState copyWith({
-    required double value,
+    double? alpha,
+    double? hue,
   }) {
     return ColorPickerState(
-      hue: value,
+      alpha: alpha ?? this.alpha,
+      hue: hue ?? this.hue,
     );
   }
 }

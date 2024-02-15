@@ -4,19 +4,27 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:custom_color_picker/src/application/color_picker_controller.dart';
 
 class ColorPicker extends ConsumerWidget {
-  const ColorPicker({super.key});
+  const ColorPicker({
+    super.key,
+    this.withOpacity = false,
+  });
+
+  final bool withOpacity;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hue = ref.watch(colorPickerControllerProvider).hue;
+    final state = ref.watch(colorPickerControllerProvider);
 
-    final color = HSVColor.fromAHSV(1.0, hue, 1.0, 1.0).toColor();
+    final color = HSVColor.fromAHSV(state.alpha, state.hue, 1.0, 1.0).toColor();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         AnimatedContainer(
-          color: HSVColor.fromAHSV(1.0, hue, 1.0, 1.0).toColor(),
+          decoration: BoxDecoration(
+            border: Border.all(color: color, width: 2),
+            color: color,
+          ),
           duration: const Duration(milliseconds: 100),
           width: 200,
           height: 200,
@@ -40,12 +48,22 @@ class ColorPicker extends ConsumerWidget {
           ),
         ),
         Slider.adaptive(
-          value: hue,
+          value: state.hue,
           min: 0,
           max: 360,
-          onChanged: (newValue) =>
-              ref.read(colorPickerControllerProvider.notifier).slide(newValue),
+          onChanged: (newValue) => ref
+              .read(colorPickerControllerProvider.notifier)
+              .changeHue(newValue),
         ),
+        if (withOpacity)
+          Slider.adaptive(
+            value: state.alpha,
+            min: 0,
+            max: 1.0,
+            onChanged: (newValue) => ref
+                .read(colorPickerControllerProvider.notifier)
+                .changeOpacity(newValue),
+          ),
       ],
     );
   }
