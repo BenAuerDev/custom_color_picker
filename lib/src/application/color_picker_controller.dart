@@ -1,5 +1,6 @@
-import 'package:custom_color_picker/src/domain/color_picker_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import 'package:custom_color_picker/src/domain/color_picker_state.dart';
 
 part 'color_picker_controller.g.dart';
 
@@ -10,12 +11,18 @@ class ColorPickerController extends _$ColorPickerController {
     return const ColorPickerState(hue: 0.0);
   }
 
-  void changeHue(double value) {
-    state = state.copyWith(hue: value);
+  void changeOpacity(double value) {
+    state = state.copyWith(
+      alpha: value,
+    );
   }
 
-  void changeOpacity(double value) {
-    state = state.copyWith(alpha: value);
+  void changeHue(double value) {
+    state = state.copyWith(
+      hue: value,
+    );
+  }
+
   void changeSaturation(double value) {
     state = state.copyWith(
       saturation: value,
