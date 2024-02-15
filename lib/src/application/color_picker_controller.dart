@@ -16,6 +16,16 @@ class ColorPickerController extends _$ColorPickerController {
 
   void changeOpacity(double value) {
     state = state.copyWith(alpha: value);
+  void changeSaturation(double value) {
+    state = state.copyWith(
+      saturation: value,
+    );
+  }
+
+  void changeVValue(double value) {
+    state = state.copyWith(
+      vValue: value,
+    );
   }
 
   void takeHex(String hex) {

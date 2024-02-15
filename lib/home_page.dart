@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
           children: [
             ColorPicker(
               withOpacity: true,
+              withSaturation: true,
             ),
             ReactiveDisplay(),
           ],
