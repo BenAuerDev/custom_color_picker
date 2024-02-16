@@ -9,18 +9,14 @@ class ReactiveDisplay extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(colorPickerControllerProvider);
 
-    final colorInHex = HSVColor.fromAHSV(state.alpha, state.hue, 1.0, 1.0)
-        .toColor()
-        .value
-        .toRadixString(16);
-
     return Column(
       children: [
         Text(
-          'You picked #$colorInHex',
+          state.colorHexValue,
           style: TextStyle(
             color:
-                HSVColor.fromAHSV(state.alpha, state.hue, 1.0, 1.0).toColor(),
+                HSVColor.fromAHSV(state.alpha, state.hue, state.saturation, 1.0)
+                    .toColor(),
             fontSize: 24,
           ),
         ),
