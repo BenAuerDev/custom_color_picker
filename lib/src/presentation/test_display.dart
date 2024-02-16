@@ -9,6 +9,12 @@ class ReactiveDisplay extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(colorPickerControllerProvider);
 
+    String stringValue = '';
+
+    submit() {
+      ref.read(colorPickerControllerProvider.notifier).takeHex(stringValue);
+    }
+
     return Column(
       children: [
         Text(
@@ -20,7 +26,19 @@ class ReactiveDisplay extends ConsumerWidget {
             fontSize: 24,
           ),
         ),
+        TextField(
+          onChanged: (value) {
+            stringValue = value;
+          },
+        ),
+        TextButton(
+          onPressed: () {
+            submit();
+          },
+          child: Text('submit'),
+        ),
       ],
     );
   }
 }
+// #1ABC9C
