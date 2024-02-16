@@ -26,6 +26,9 @@ class ColorSlider extends ConsumerWidget {
     late Function(double) changeValue;
 
     switch (parameter) {
+      // Alpha/Opacity
+      // Goes from 0.0 to 1.0
+      // Stops every 0.01
       case ColorPickerValue.alpha:
         value = state.alpha;
         gradientColors = [
@@ -37,6 +40,10 @@ class ColorSlider extends ConsumerWidget {
             .read(colorPickerControllerProvider.notifier)
             .changeOpacity(newValue);
         break;
+
+      // Hue
+      // Goes from 0.0 to 360.0
+      // Stops every 1
       case ColorPickerValue.hue:
         value = state.hue;
         gradientColors = [
@@ -48,6 +55,10 @@ class ColorSlider extends ConsumerWidget {
             .read(colorPickerControllerProvider.notifier)
             .changeHue(newValue);
         break;
+
+      // Saturation
+      // Goes from 0.0 to 1.0
+      // Stops every 0.01
       case ColorPickerValue.saturation:
         value = state.saturation;
         gradientColors = [
