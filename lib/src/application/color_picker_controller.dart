@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:custom_color_picker/src/domain/color_picker_state.dart';
@@ -38,6 +39,16 @@ class ColorPickerController extends _$ColorPickerController {
   void takeHex(String hex) {
     final hexValue = hex.startsWith('#') ? hex.substring(1) : hex;
 
-    state = state.copyWith(hue: int.parse(hexValue, radix: 16).toDouble());
+    final hsvColor = HSVColor.fromColor(
+      Color(int.parse('0xFF$hexValue')),
+    );
+
+    state = state.copyWith(
+      hue: hsvColor.hue,
+      saturation: hsvColor.saturation,
+      vValue: hsvColor.value,
+      color: hsvColor,
+      colorHexValue: hex,
+    );
   }
 }
